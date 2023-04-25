@@ -13,4 +13,11 @@ export default defineConfig({
         }),
         react(),
     ],
+    build: {
+        outDir: 'public/assets',
+        emptyOutDir: true,
+        manifest: true,
+    },
+    publicDir: 'fake_dir',
+    // 라라벨에서 이미 public 디렉토리를 사용하므로 충돌을 피하기 위해 가짜 경로를 설정합니다.
 });

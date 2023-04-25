@@ -1,18 +1,15 @@
 import './bootstrap';
 
-import ReactDOM from "react-dom/client";
-import Counter from "./components/Counter";
-import Logo from "../images/logo-with-shadow.png";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import RegistrationForm from './components/RegistrationForm';
 
-function App() {
-    return (
-        <>
-            <h1>Hello World</h1>
-            <img src={Logo} />
-            <Counter />
-        </>
-    );
-}
+const App = () => {
+  return (
+    <div className="app">
+      <RegistrationForm />
+    </div>
+  );
+};
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
-root.render(<App />);
+ReactDOM.render(<App />, document.getElementById('app'));
