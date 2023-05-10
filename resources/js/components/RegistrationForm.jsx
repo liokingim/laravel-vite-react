@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ const RegistrationForm = () => {
     password: '',
     passwordConfirmation: '',
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -14,8 +16,19 @@ const RegistrationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form data:', formData);
+    
+    axios.post('/register', formData)
+      .then(response => {
+        setSubmitted(true);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
+
+  if (submitted) {
+    return <div>확인 화면</div>;
+  }
 
   return (
         <div className="registration-form">
