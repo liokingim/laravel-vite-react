@@ -41,4 +41,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // 1. 관계 (Relationships) 일대다
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
+    // 2. 스코프 (Scopes):
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    // 3. 액세서 (Accessors):
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // 4. 뮤테이터 (Mutators):
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
 }
