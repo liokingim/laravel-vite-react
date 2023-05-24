@@ -70,3 +70,12 @@ npm install --save-dev jest @testing-library/react
 npm install --save-dev @babel/preset-react
 npm install --save-dev @babel/preset-env
 npm install --save-dev jest-environment-jsdom
+
+## test
+아래를 입력하면 테스트 진행
+npm test
+
+npm test src/Form.test.js
+
+npm test -- --watch
+
