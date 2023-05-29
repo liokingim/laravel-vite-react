@@ -25,10 +25,14 @@ class BankController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'bank_code' => 'required|numeric|digits:4',
-            'branch_number' => 'nullable|numeric|digits:3'
+            'depositor' => 'required|string',
+            'bank_code' => 'required|string|size:4',
+            'branch_number' => 'required|string|size:3',
+            'account_number' => 'required|numeric|digits:7',
+            'account_type' => 'required|numeric|between:1,3'
         ]);
 
-        // 이후 로직...
+        // 서비스 호출
+        $this->bankService->storeAccountInfo($validatedData);
     }
 }
