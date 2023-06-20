@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\BankService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BankController extends Controller
 {
@@ -17,7 +18,16 @@ class BankController extends Controller
     public function balance(Request $request)
     {
         $accountId = $request->get('accountId');
-        $balance = $this->bankService->getBalance($accountId);
+        $balance = $this->bankService->getBalance2($accountId);
+
+        return response()->json(['balance' => $balance]);
+    }
+
+    public function balance2(Request $request)
+    {
+        $accountId = $request->get('accountId');
+
+        $balance = $this->bankService->storeAccountInfo2($accountId);
 
         return response()->json(['balance' => $balance]);
     }
@@ -25,7 +35,7 @@ class BankController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'depositor' => 'required|string',
+            'bank_name' => 'required|string',
             'bank_code' => 'required|string|size:4',
             'branch_number' => 'required|string|size:3',
             'account_number' => 'required|numeric|digits:7',

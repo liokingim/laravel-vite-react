@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/bank/balance', [BankController::class, 'balance'])->name('bank.balance');
+
+Route::get('/bank/store', [BankController::class, 'store'])->name('bank.store');
+
+Route::get('/bank/balance2', [BankController::class, 'balance2'])->name('bank.balance2');
