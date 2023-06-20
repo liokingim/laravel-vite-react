@@ -79,3 +79,9 @@ npm test src/Form.test.js
 
 npm test -- --watch
 
+## unit test
+.env
+SAIL_XDEBUG_MODE=develop,debug,coverage
+
+php artisan test --coverage  .\tests\Unit\BankControllerTest3.php
+
